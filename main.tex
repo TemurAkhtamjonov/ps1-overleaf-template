@@ -2,44 +2,71 @@
 \settopmatter{printacmref=false,printfolios=true}
 \setcopyright{none}
 \renewcommand\footnotetextcopyrightpermission[1]{}
+
 \usepackage{amsmath,tabularx,array,enumitem,balance}
 \definecolor{CourseBlue}{HTML}{315EFB}
 \definecolor{CourseTeal}{HTML}{14877D}
-\hypersetup{colorlinks=true,linkcolor=CourseBlue,citecolor=CourseTeal,urlcolor=CourseTeal}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=CourseBlue,
+  citecolor=CourseTeal,
+  urlcolor=CourseTeal
+}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \setlist{leftmargin=*,topsep=3pt,itemsep=2pt}
-\newcommand{\CourseNumber}{COMSCI/ECON 206}
-\newcommand{\CourseName}{Computational Microeconomics}
-\newcommand{\CourseSession}{Autumn 2026 Session 1}
-\newcommand{\Instructor}{Luyao Zhang}
-\newcommand{\WorkshopSession}{[Your assigned workshop session]}
-% Replace these with YOUR fork/project URLs, not the instructor's template.
-\newcommand{\GitHubLink}{[Your project GitHub URL]}
-\newcommand{\TemplateRepository}{\url{https://github.com/sunshineluyao/ps1-overleaf-template}}
-\newcommand{\ColabLink}{[Insert verified Colab URL]}
-\newcommand{\DemoLink}{[Insert verified Hugging Face Space URL]}
-\newcommand{\coursemeta}{\noindent\textbf{Submission to:} \CourseNumber{} --- \CourseName.\\
-\textbf{Course session:} \CourseSession. \textbf{Workshop:} \WorkshopSession.\\
-\textbf{Instructor:} \Instructor. \textbf{Assignment:} PS1 research proposal.\par\smallskip}
-\title{[A Specific, Researchable Proposal Title]}
-\author{[Your Full Name]}
-\affiliation{\institution{Duke Kunshan University}\city{Kunshan}\country{China}}
-\email{[Your university email]}
-\renewcommand{\shortauthors}{[Your name]}
+
+\newcommand{\GitHubLink}{\url{https://github.com/TemurAkhtamjonov/ps1-overleaf-template}}
+\newcommand{\ColabLink}{\url{https://colab.research.google.com/drive/1EwIGvrd73aRVu7Y1Rci-PaBxlrlTwzzC}}
+\newcommand{\DemoLink}{
+\url{https://huggingface.co/spaces/dku-comsci-econ206-2026/trust-game}
+}
+
+\title{When Are AI Promises Credible? Incentive-Backed Commitments in a Trust Game}
+
+\author{Temur Akhtamjonov}
+\affiliation{
+  \institution{Duke Kunshan University}
+  \city{Kunshan}
+  \country{China}
+}
+\email{temur.akhtamjonov@dukekunshan.edu.cn}
+\renewcommand{\shortauthors}{Temur Akhtamjonov}
+
+% Subtle academic styling
+\usepackage{colortbl}
+
+\definecolor{TitleNavy}{HTML}{17324D}
+\definecolor{AccentTeal}{HTML}{167D8D}
+\definecolor{SoftBlue}{HTML}{EEF4F8}
+
+\hypersetup{
+  linkcolor=TitleNavy,
+  citecolor=AccentTeal,
+  urlcolor=AccentTeal
+}
 
 \begin{document}
+
 \begin{teaserfigure}
-\captionsetup{skip=8pt}
 \centering
-\includegraphics[width=\textwidth]{figures/ps1_teaser.pdf}
-\caption{Prospective research design adapted from the class proposal. Economic stochastic choice~\cite{rogers2009}, recursive LLM reasoning~\cite{zhang2025}, human reasoning levels~\cite{camerer2004} and persona audits~\cite{gupta2024} motivate a shared evaluation~\cite{jia2025}. Solid arrows within scenes show conceptual relations; dashed arrows show proposed synthesis. Estimated depth and precision are model-dependent, not direct observations of cognition.}
-\Description{Three disciplinary scenes contain a symbolic payoff matrix, successive belief levels, and a comparison of abstract personas. Dashed paths converge on a proposed evaluation of reasoning depth, decision precision and contextual sensitivity. All objects and text are editable in Draw.io.}
+\includegraphics[width=\textwidth]{commitment_bond_teaser.pdf}
+\caption{Commitment-bond Trust Game. The primary one-shot comparison holds hidden type information constant while varying enforcement. The eight-round extension visualizes how forecasts and investment update after observed outcomes.}
+\Description{A visual overview of the Trust Game proposal. A human participant forecasts promise-keeping and invests; an AI receiver makes a public promise and faces a transparent commitment bond. The figure distinguishes the one-shot causal comparison from the eight-round learning extension and reports the main outcomes: compliance, investment, payoffs, welfare, and calibration.}
 \label{fig:teaser}
 \end{teaserfigure}
-\maketitle\raggedbottom\coursemeta
 
-\noindent\textcolor{CourseTeal}{\textbf{Template and illustrative figure.}} Adapt this class-example diagram and replace prompts with your own proposal. Fork the class repository and import your fork into Overleaf; see README for steps. Keep five numbered sections within two main pages, including metadata, Figure 1, its caption, and artifact links. Author Notes, references, and appendices follow on separate pages.
+\maketitle
+\raggedbottom
+
+\noindent
+\textbf{Course:} COMSCI/ECON 206,
+Computational Microeconomics, Autumn 2026 Session 1.\\
+\textbf{Instructor:} Prof. Luyao Zhang.\\
+\textbf{Workshop role:} Team 3, economist.\\
+\textbf{Assignment:} PS1 research proposal, classwork draft.
+\par\smallskip
 
 \input{sections/proposal}
 \input{appendices/supporting}
+
 \end{document}
