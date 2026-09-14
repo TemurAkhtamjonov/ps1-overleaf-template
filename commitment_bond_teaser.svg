@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="270" viewBox="0 0 1200 270">
+  <style>
+    .h{font-family:Arial,sans-serif;font-size:15px;font-weight:700;letter-spacing:.6px;fill:#15395d}
+    .t{font-family:Arial,sans-serif;font-size:14px;fill:#15395d}
+    .s{font-family:Arial,sans-serif;font-size:13px;fill:#15395d}
+    .r{font-family:Arial,sans-serif;font-size:13px;font-weight:700;fill:#15395d}
+  </style>
+  <rect width="1200" height="270" fill="white"/>
+  <text x="600" y="24" text-anchor="middle" class="h" style="font-size:19px">FROM CHEAP TALK TO CALIBRATED TRUST</text>
+  <text x="600" y="45" text-anchor="middle" class="s" fill="#4b6f91">A transparent commitment bond changes the cost of breaking an AI promise.</text>
+
+  <rect x="20" y="70" width="245" height="94" rx="12" fill="#eef5fc" stroke="#82add7"/>
+  <text x="38" y="95" class="h">PROBLEM</text>
+  <text x="38" y="118" class="t">Cheap talk: a promise does not</text>
+  <text x="38" y="137" class="t">change the payoff from breaking it.</text>
+
+  <rect x="310" y="70" width="245" height="94" rx="12" fill="#f7fafc" stroke="#82add7"/>
+  <text x="328" y="95" class="h">PARTICIPANT</text>
+  <text x="328" y="118" class="t">1. Forecast compliance</text>
+  <text x="328" y="137" class="t">2. Invest s from 10 points</text>
+
+  <rect x="600" y="60" width="285" height="114" rx="12" fill="#fff5e9" stroke="#ee8a22"/>
+  <text x="618" y="85" class="h">AI RECEIVER + BOND</text>
+  <text x="618" y="108" class="t">Receives 3s; promises 3s/2.</text>
+  <text x="618" y="130" class="t">A violation transfers 2s</text>
+  <text x="618" y="149" class="t">to the participant.</text>
+
+  <rect x="930" y="70" width="250" height="94" rx="12" fill="#edfaf7" stroke="#55afa5"/>
+  <text x="948" y="95" class="h">OUTCOMES</text>
+  <text x="948" y="118" class="t">Compliance · investment</text>
+  <text x="948" y="137" class="t">Payoffs · calibration</text>
+
+  <path d="M265 117H300" stroke="#477ba7" stroke-width="2"/><path d="M300 117l-10-7v14z" fill="#477ba7"/>
+  <path d="M555 117H590" stroke="#477ba7" stroke-width="2"/><path d="M590 117l-10-7v14z" fill="#477ba7"/>
+  <path d="M885 117H920" stroke="#477ba7" stroke-width="2"/><path d="M920 117l-10-7v14z" fill="#477ba7"/>
+
+  <rect x="60" y="202" width="520" height="48" rx="10" fill="#f4f8fc" stroke="#82add7"/>
+  <text x="78" y="222" class="r">PRIMARY: one-shot causal comparison</text>
+  <text x="78" y="240" class="s">Fixed 50/50 hidden types; vary only cheap talk versus bond.</text>
+  <rect x="620" y="202" width="520" height="48" rx="10" fill="#f0fbf8" stroke="#55afa5"/>
+  <text x="638" y="222" class="r">EXTENSION: eight-round learning visualization</text>
+  <text x="638" y="240" class="s">Five cheap-talk rounds → three bond rounds; updating, not a causal estimate.</text>
+</svg>
