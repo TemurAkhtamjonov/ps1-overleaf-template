@@ -1,50 +1,105 @@
 \section{Three connected research questions}
-Start from Intellectual Statement II. State the background, motivation, application, affected stakeholders, and strategic tension. Explain your proposal's relationship to a Nobel-recognized foundation and current research.
 
-\textbf{Q1---Economics:} [Which incentive, welfare, allocation, or institutional question needs an answer?]\par
-\textbf{Q2---Computation:} [Which model, algorithm, or evaluation makes the answer checkable?]\par
-\textbf{Q3---Behavior:} [Which belief, preference, reasoning limit, or learning mechanism could alter the prediction?]
+AI agents can make promises before acting, but a promise
+does not necessarily change the incentive to exploit
+another player. My Intellectual Statement II developed
+a repeated Trust Game to examine this problem.
+The proposed application is AI-mediated resource
+allocation, where cooperation depends on credible
+commitments.
 
-Explain why the answers depend on one another. Cite relevant economics, computer-science, and behavioral-science papers. Refer to Figure~\ref{fig:teaser} and explain how its mechanism connects your questions.
+\textbf{Q1 -- Economics:}
+When does a commitment bond make honoring a promise
+more profitable than breaking it?
+
+\textbf{Q2 -- Computation:}
+How can a reproducible game compare compliance,
+individual payoffs, and welfare under different rules?
+
+\textbf{Q3 -- Behavior:}
+How does investment change after promises are honored
+or broken?
+
+Together, these questions ask whether enforcement can
+support cooperation through both changed incentives
+and changing trust. Figure~\ref{fig:teaser} connects
+these mechanisms.
+
+Leung et al.~\cite{leung2026} show why even minimal observation can support cooperation among learning agents, while Morozov and Feigel~\cite{morozov2026} motivate responses tailored to a specific counterpart. My Trust Game translates these ideas into a transparent commitment test: participants observe whether an AI keeps a promise and whether an enforcement rule changes the incentive to do so.
 
 \section{Answer to Q1: incentives and intellectual lineage}
-State a provisional answer or falsifiable hypothesis. Define players, actions versus strategies, payoffs, timing, and information. Name the solution concept and cite its defining paper, such as Nash~\cite{nash1950} or Bayesian equilibrium~\cite{harsanyi1968}. State what the benchmark establishes and what it leaves unresolved. Distinguish hypothetical, observed, estimated, and inherited quantities.
+
+My provisional hypothesis is that a transparent commitment bond makes an AI receiver's promise incentive compatible and can improve a sender's calibration of promise-keeping. Player A begins with 10 points and chooses an integer investment $s\in\{0,\ldots,10\}$. Player B receives $3s$, publicly promises to return $q(s)=3s/2$, and then chooses a return $r\in\{0,0.5,\ldots,3s\}$. Thus, returns use exact half-points: for example, $7/2=3.5$ and $9/2=4.5$; no value is rounded down.
+
+In the cheap-talk baseline, a promise changes no payoff. In the treatment, breaking the promise ($r\neq q(s)$) transfers a transparent penalty $bs$ from B to A. Payoffs are
+\[
+\pi_A=10-s+r+bs\mathbf{1}[r\neq q(s)],\qquad
+\pi_B=3s-r-bs\mathbf{1}[r\neq q(s)].
+\]
+With $b=2$, honoring yields B $1.5s$, while returning zero after a violation yields $s$; therefore, a self-interested receiver prefers to honor a positive-investment promise.
+
+A complete-information Nash benchmark~\cite{nash1950} checks this incentive logic, but it does not represent the proposed study's central uncertainty: participants do not observe whether the AI is honest or exploitative. I therefore model a fixed, hidden 50/50 type distribution and use a Bayesian-incomplete-information interpretation~\cite{harsanyi1968}. This separates a rule that changes incentives from information about the receiver.
 
 \section{Answer to Q2: method and evaluation}
-Explain the computational part of Figure~\ref{fig:teaser}: inputs, algorithm, baseline, metric, and a meaningful mathematical or computational check. Specify your smallest feasible experiment and one modification to the baseline. State the actual outputs obtained; label every untested outcome as expected or planned. Your Colab notebook and interactive game must explain the same research question and identify any differences in model or scope.
 
-\clearpage\balance
+The reproducible Python/Colab benchmark holds the hidden bot-type prior constant: honest and exploitative programmed receivers each occur with probability $0.5$. In both conditions, the receiver makes the same public promise. The only changed variable is the bond. The honest bot returns $q(s)$ in either condition. The exploitative bot returns $0$ under cheap talk, but returns $q(s)$ when the bond is active because violating is no longer payoff maximizing.
+
+Before investing, the participant reports a forecast $p\in[0,1]$ that the promise will be kept. The notebook records investment, return, compliance, both payoffs, welfare, and the Brier score $(p-y)^2$, where $y=1$ only when a positive investment receives the promised return. Zero-investment rounds are retained as behavior but excluded from the compliance measure.
+
+At $s=10$, the programmed benchmark produces expected compliance of $0.5$ under cheap talk and $1.0$ with a bond. Expected welfare is 30 in both conditions, but the expected payoff distribution changes from $(7.5,22.5)$ for A and B to $(15,15)$. These are simulated outputs from hand-coded bots, not findings about humans or real AI agents. The smallest feasible next experiment randomly assigns human participants to one one-shot condition, keeping the type distribution constant while varying only the bond.
+
+
+\balance
+
 \section{Answer to Q3: behavior and competing explanations}
-Identify a behavioral mechanism and a competing explanation. Describe evidence that would discriminate between them. Explain how this changes the economic model or computational design. State the limits of what the planned evidence can identify. Synthetic or simulated results do not establish human or real AI behavior. Include a feasible next test and what finding would change your mind.
 
+The behavioral question is whether a bond improves calibrated expectations rather than merely raising investment. People may overestimate an AI partner's alignment, as recent experimental work suggests~\cite{he2025}. My main mechanism is that a transparent penalty gives participants a comprehensible reason to expect promise-keeping. The competing explanation is that participants simply trust any additional interface feature, even when they do not understand its incentive effect.
+
+The proposed one-shot, between-participant study discriminates between these explanations. Before investment, every participant forecasts the probability of promise-keeping; bot-type information and its 50/50 distribution remain identical across conditions. I will compare mean forecast, actual positive-transfer compliance, the aggregate calibration gap $|\overline{p}-\overline{y}|$, and mean Brier score. Better calibration under the bond---not just higher investment---would support the mechanism. If forecasts rise but become less accurate, or participants cannot explain the penalty, I would reject the claim that the bond improves understanding. This design cannot yet establish behavior of deployed LLM agents; it tests how people reason about a controlled AI-partner representation.
 
 \section{Advanced development and future directions}
-Build on a named Nobel laureate's defining work and cite the award record. Identify an enduring human question---such as cooperation, fairness, trust or collective choice---and explain what the foundation establishes. Add a relevant Turing Award foundation where it clarifies the computational lineage.
 
-Explain what is distinctive about today's environment and technology, what current research leaves unresolved, and how your proposal advances that boundary. State the economic, computational and behavioral contributions and the new insight their integration makes possible.
+Mechanism-design theory asks how rules should be designed when participants respond strategically, rather than assuming that promises reveal true intentions. Hurwicz, Maskin, and Myerson received the 2007 Nobel Prize in Economic Sciences for establishing this foundation~\cite{nobel2007}. Their central lesson for this proposal is that institutional rules can change behavior by changing incentives.
 
-\begin{table}[h]\caption{From laureate foundations to a new interdisciplinary contribution.}
-\begin{tabularx}{\columnwidth}{@{}p{1.6cm}Y@{}}\toprule
-\textbf{Horizon}&\textbf{Milestone and evidence}\\\midrule
-Foundation&[Laureate, defining work, enduring question and retained insight.]\\
-PS1&[Current-era setting, working baseline and meaningful check.]\\
-Next study&[New interdisciplinary explanation or design; a discriminating test.]\\
-Longer term&[Broader validation, benefits and reusable knowledge or tools.]\\
-2056&[Integrated contribution and evidence connecting it to the ambition below.]\\\bottomrule
-\end{tabularx}\end{table}
+My project applies that lesson to a small AI-mediated Trust Game. The one-shot benchmark and planned behavioral study hold the hidden honest/exploitative type distribution constant while varying only enforcement, so they provide the clean comparison. The companion game adds an eight-round educational extension: five cheap-talk rounds followed by three bond rounds with the same hidden programmed type. It makes forecast and investment updating visible, but its fixed order cannot identify a causal bond effect. Later work should test communicating AI agents, alternative penalty sizes, fairness effects, and whether calibrated trust persists outside this controlled game.
 
-\noindent\textbf{Expected 2056 Nobel Prize and Turing Award contribution statement.}
-By 2056, I aspire to be recognized for [theory, method or design] addressing [enduring human question] in [the current era's distinctive environment]. Building on [laureates and cited foundations], I will integrate [economics], [computer science] and [behavioral science] to advance [specific boundary]. Progress will be demonstrated by [milestones and evidence], with intellectual merits in [knowledge] and practical impacts for [people and institutions].
+\begin{table}[h]
+\caption{Development pathway.}
+\begin{tabularx}{\columnwidth}{@{}p{1.5cm}Y@{}}
+\toprule
+\textbf{Stage} & \textbf{Milestone} \\
+\midrule
+PS1 & Build and verify a reproducible one-shot bond-versus-no-bond benchmark with exact half-point returns, plus an eight-round learning extension.\\
+Next study & Hold hidden-type information constant; elicit forecasts before investment and compare calibration.\\
+Later & Test communicating AI agents and human participants under transparent commitment rules.\\
+2056 & Develop validated institutions for credible AI-mediated cooperation.\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\noindent
+\textbf{Expected 2056 Nobel Prize and Turing Award
+contribution statement.}
+By 2056, I aspire to contribute incentive-backed
+commitment mechanisms for AI-agent economies.
+I aim to connect economic institution design,
+computational evaluation, and behavioral models of
+trust. This is an aspiration, supported by staged
+testing rather than a prediction of an award.
 
 \subsection*{Open Science Statement}
-\textbf{GitHub:} \GitHubLink\\
-\textbf{Google Colab:} \ColabLink\par
-[Identify available code, data or synthetic inputs, notebook, dependencies, outputs, release/commit and actual reuse terms. Give the shortest reproducible run instruction.]
+\textbf{GitHub:} \href{https://github.com/TemurAkhtamjonov/ps1-overleaf-template}{PS1 repository (source and notebook)}\\
+\textbf{Google Colab:} \href{https://colab.research.google.com/drive/1EwIGvrd73aRVu7Y1Rci-PaBxlrlTwzzC}{Run the computational notebook in Colab}\\
+\textbf{Interactive demo:} \href{https://huggingface.co/spaces/dku-comsci-econ206-2026/commitment-bond-trust-game}{Play the interactive demo}
+
+The repository contains the Overleaf source and reproducible Python benchmark. The Colab notebook includes a one-shot cheap-talk-versus-bond comparison and an eight-round synthetic learning extension: five cheap-talk rounds followed by three bond rounds. The Hugging Face demo makes both modes playable. All outputs are simulated benchmarks, not human or LLM data, and use only standard Python libraries.
 
 \subsection*{Statement of Contribution to the UN's SDGs}
-\textbf{Hugging Face:} \DemoLink\\
-Through an open-access [tool], this project aims to support \textbf{SDG 4---Quality Education}~\cite{sdg4} by helping [audience] learn [concept] through [interaction]. [State access needs, learning instructions and a feasible evaluation.] Distinguish the resource released from benefits that remain to be evaluated.
+\textbf{Hugging Face:} \href{https://huggingface.co/spaces/dku-comsci-econ206-2026/commitment-bond-trust-game}{Interactive commitment-bond Trust Game}
 
-\subsection*{Submission milestones}
-First draft: September 13, 2026, 11:00 P.M. Beijing time (UTC+8). Class review: September 14. Proposed: rebuttal September 16 and revised submission September 20, both at 11:00 P.M. Update Appendix~\ref{app:abstract} with each reflection and revision.
-
+The game aims to support
+\textbf{SDG 4 -- Quality Education}~\cite{sdg4}
+by helping students compare cheap talk with
+incentive-backed promises. Learning benefits remain
+untested; a short before-and-after explanation task
+could assess understanding.
